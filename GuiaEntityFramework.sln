@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26430.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirts", "CodeFirts\CodeFirts.csproj", "{258D573E-45D3-40B2-A628-A087E4BB9383}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirst_ExistingDB", "CodeFirst_ExistingDB\CodeFirst_ExistingDB.csproj", "{17DAA967-2C34-43CA-B352-3A6DF68BDD94}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{258D573E-45D3-40B2-A628-A087E4BB9383}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{258D573E-45D3-40B2-A628-A087E4BB9383}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{258D573E-45D3-40B2-A628-A087E4BB9383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17DAA967-2C34-43CA-B352-3A6DF68BDD94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17DAA967-2C34-43CA-B352-3A6DF68BDD94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17DAA967-2C34-43CA-B352-3A6DF68BDD94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17DAA967-2C34-43CA-B352-3A6DF68BDD94}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
