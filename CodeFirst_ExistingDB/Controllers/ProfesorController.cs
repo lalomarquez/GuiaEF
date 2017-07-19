@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using CodeFirst_ExistingDB;
+using System.Data.SqlClient;
 
 namespace CodeFirst_ExistingDB.Controllers
 {
@@ -17,7 +18,16 @@ namespace CodeFirst_ExistingDB.Controllers
         // GET: Profesor
         public ActionResult Index()
         {
-            return View(db.Profesor.ToList());
+            /*
+             * Code Firts
+             */
+            //return View(db.Profesor.ToList());
+
+            /*
+             * Code Firts con SP
+             */
+            var getAll = db.Database.SqlQuery<TBL_Profesor>("sp_GetAllProfesor");
+            return View(getAll.ToList());
         }
 
         // GET: Profesor/Details/5
@@ -38,6 +48,14 @@ namespace CodeFirst_ExistingDB.Controllers
         // GET: Profesor/Create
         public ActionResult Create()
         {
+            //ViewBag.Days = TBL_Profesor.DaySelectList.Select(d => new SelectListItem { Text = d.ToString() });
+            //ViewBag.Months = TBL_Profesor.MonthSelectList.Select((m, i) => new SelectListItem
+            //{
+            //    Value = (i + 1).ToString(),
+            //    Text = m
+            //});
+            //ViewBag.Years = TBL_Profesor.YearSelectList.Select(y => new SelectListItem { Text = y.ToString() });
+
             return View();
         }
 
@@ -48,13 +66,26 @@ namespace CodeFirst_ExistingDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "IdProfesor,Nombre,ApellidoPaterno,ApellidoMaterno,DiaNacimiento,MesNacimiento,AnoNacimiento,LugardeNacimiento,Domicilio,CorreoElectronico,Telefono")] TBL_Profesor tBL_Profesor)
         {
+            /*
+            * Code Firts
+            */
+            //if (ModelState.IsValid)
+            //{
+            //    db.Profesor.Add(tBL_Profesor);
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //return View(tBL_Profesor);
+
+            /*
+             * Code Firts con SP
+             */
             if (ModelState.IsValid)
             {
                 db.Profesor.Add(tBL_Profesor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             return View(tBL_Profesor);
         }
 
@@ -80,6 +111,20 @@ namespace CodeFirst_ExistingDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdProfesor,Nombre,ApellidoPaterno,ApellidoMaterno,DiaNacimiento,MesNacimiento,AnoNacimiento,LugardeNacimiento,Domicilio,CorreoElectronico,Telefono")] TBL_Profesor tBL_Profesor)
         {
+            /*
+            * Code Firts
+            */
+            //if (ModelState.IsValid)
+            //{
+            //    db.Entry(tBL_Profesor).State = EntityState.Modified;
+            //    db.SaveChanges();
+            //    return RedirectToAction("Index");
+            //}
+            //return View(tBL_Profesor);
+
+            /*
+             * Code Firts con SP
+             */
             if (ModelState.IsValid)
             {
                 db.Entry(tBL_Profesor).State = EntityState.Modified;
@@ -109,6 +154,17 @@ namespace CodeFirst_ExistingDB.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            /*
+             * Code Firts
+             */
+            //TBL_Profesor tBL_Profesor = db.Profesor.Find(id);
+            //db.Profesor.Remove(tBL_Profesor);
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+
+            /*
+             * Code Firts con SP
+             */
             TBL_Profesor tBL_Profesor = db.Profesor.Find(id);
             db.Profesor.Remove(tBL_Profesor);
             db.SaveChanges();

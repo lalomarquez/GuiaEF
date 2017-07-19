@@ -3,8 +3,8 @@ namespace CodeFirst_ExistingDB
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
+    using System.Linq;
+    using System.Web.Mvc;
 
     public partial class TBL_Profesor
     {
@@ -44,5 +44,30 @@ namespace CodeFirst_ExistingDB
         [Required]
         [StringLength(10)]
         public string Telefono { get; set; }
+
+        //public static IEnumerable<int> DaySelectList
+        //{
+        //    get
+        //    {
+        //        return Enumerable.Range(1, 31);
+        //    }
+        //}
+
+        //public static IEnumerable<String> MonthSelectList
+        //{
+        //    get
+        //    {
+        //        return new System.Globalization.DateTimeFormatInfo().MonthNames;
+        //    }
+        //}
+
+        //public static IEnumerable<int> YearSelectList
+        //{
+        //    get
+        //    {
+        //        return Enumerable.Range(DateTime.Now.Year - 30, 30 + 1);
+        //    }
+        //}
+
     }
 }

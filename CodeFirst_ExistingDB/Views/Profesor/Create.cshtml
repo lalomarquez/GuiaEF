@@ -42,7 +42,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DiaNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DiaNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.DiaNacimiento, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model => model.DiaNacimiento, Enumerable.Range(1, 31).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Day")
                 @Html.ValidationMessageFor(model => model.DiaNacimiento, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -50,7 +51,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MesNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MesNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.MesNacimiento, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model => model.MesNacimiento, Enumerable.Range(1, 12).Select(i => new SelectListItem { Value = i.ToString(), Text = System.Globalization.CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(i) }), "Month")
                 @Html.ValidationMessageFor(model => model.MesNacimiento, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,7 +60,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AnoNacimiento, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AnoNacimiento, new { htmlAttributes = new { @class = "form-control" } })
+                @*@Html.EditorFor(model => model.AnoNacimiento, new { htmlAttributes = new { @class = "form-control" } })*@
+                @Html.DropDownListFor(model => model.AnoNacimiento, Enumerable.Range(1900, 114).Select(i => new SelectListItem { Value = i.ToString(), Text = i.ToString() }), "Year")
                 @Html.ValidationMessageFor(model => model.AnoNacimiento, "", new { @class = "text-danger" })
             </div>
         </div>
