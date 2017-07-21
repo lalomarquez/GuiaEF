@@ -4,6 +4,22 @@
     ViewBag.Title = "Index";
 }
 
+<h3>Resultado del SP: <strong>@ViewBag.Resultado</strong></h3>
+<strong>resultado:</strong>
+@foreach (var item in ViewBag.lista)
+{
+    <li>@item.IdProfesor</li>
+    <li>@item.Nombre</li>
+    <li>@item.ApellidoPaterno</li>
+    <li>@item.ApellidoMaterno</li>
+    <li>@item.DiaNacimiento</li>
+    <li>@item.MesNacimiento</li>
+    <li>@item.AnoNacimiento</li>
+    <li>@item.LugardeNacimiento</li>
+    <li>@item.Domicilio</li>
+    <li>@item.CorreoElectronico</li>
+    <li>@item.Telefono</li>
+}
 <h2>Index</h2>
 
 <p>

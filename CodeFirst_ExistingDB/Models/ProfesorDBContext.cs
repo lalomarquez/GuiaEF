@@ -4,6 +4,9 @@ namespace CodeFirst_ExistingDB
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using System.Collections.Generic;
+    using System.Data.SqlClient;
+    using System.Data;
 
     public partial class ProfesorDBContext : DbContext
     {
@@ -45,6 +48,34 @@ namespace CodeFirst_ExistingDB
                     .Parameter(p => p.Telefono, "Telefono"))
                 );
             base.OnModelCreating(modelBuilder);
+        }
+
+        public List<TBL_Profesor> GetByProfesor(string name, out int procResult)
+        {
+            var procResultParam = new SqlParameter
+            {
+                ParameterName = "@procResult",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Output
+            };
+
+            var sqlQuery = Database.SqlQuery<TBL_Profesor>(
+                "exec @procResult = sp_GetbyProfesor @Nombre",
+                new object[]
+            {
+            new SqlParameter
+            {
+                ParameterName = "@Nombre",
+                Value = name,
+                SqlDbType = SqlDbType.VarChar,
+                Direction = ParameterDirection.Input
+            },
+            procResultParam
+            }).ToList();
+
+            procResult = (int)procResultParam.Value;
+
+            return sqlQuery;
         }
     }
 }

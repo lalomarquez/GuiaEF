@@ -15,6 +15,23 @@ namespace CodeFirst_ExistingDB.Controllers
     {
         private ProfesorDBContext db = new ProfesorDBContext();
 
+        [NonAction]
+        public int GetbyUser()
+        {
+            int resultado = 0;
+            using (var context = new ProfesorDBContext())
+            {
+                SqlParameter returnCode = new SqlParameter("@ReturnCode", SqlDbType.Int);
+                returnCode.Direction = ParameterDirection.Output;
+
+                SqlParameter idParam = new SqlParameter("@IdProfesor", SqlDbType.Int);                
+                idParam.Value = 12;
+                resultado = context.Database.ExecuteSqlCommand("exec @ReturnCode = sp_DeleteProfesor @IdProfesor", returnCode, idParam);
+            }
+
+            return resultado;
+        }
+
         // GET: Profesor
         public ActionResult Index()
         {
@@ -26,6 +43,11 @@ namespace CodeFirst_ExistingDB.Controllers
             /*
              * Code Firts con SP
              */
+            int procResult = 0;            
+            var list = db.GetByProfesor("bb", out procResult);
+            ViewBag.resultado = procResult;
+            ViewBag.lista = list;
+
             var getAll = db.Database.SqlQuery<TBL_Profesor>("sp_GetAllProfesor");
             return View(getAll.ToList());
         }
